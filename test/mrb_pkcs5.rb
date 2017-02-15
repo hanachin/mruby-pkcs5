@@ -69,15 +69,14 @@ assert("PKCS5.pbkdf2_hmac(password, salt, iterations, derive_key_bytesize, diges
     PKCS5.pbkdf2_hmac(p, s, c, dk_len, Digest::SHA1)
   end
 
-  # skip because it failed
-  # assert_equal(dk(%(
-  #   56 fa 6a a7 55 48 09 9d
-  #   cc 37 d7 f0 34 25 e0 c3
-  # ))) do
-  #   p = "pass\00word"
-  #   s = "sa\x00lt"
-  #   c = 4096
-  #   dk_len = 16
-  #   PKCS5.pbkdf2_hmac(p, s, c, dk_len, Digest::SHA1)
-  # end
+  assert_equal(dk(%(
+    56 fa 6a a7 55 48 09 9d
+    cc 37 d7 f0 34 25 e0 c3
+  ))) do
+    p = "pass\00word"
+    s = "sa\x00lt"
+    c = 4096
+    dk_len = 16
+    PKCS5.pbkdf2_hmac(p, s, c, dk_len, Digest::SHA1)
+  end
 end

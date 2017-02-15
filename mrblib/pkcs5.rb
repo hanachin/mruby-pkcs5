@@ -11,6 +11,6 @@ module PKCS5
       end
       derived_key += t
     end
-    derived_key[0, derive_key_bytesize]
+    derived_key[0...derive_key_bytesize]
   end
 end
